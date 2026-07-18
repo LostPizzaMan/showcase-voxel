@@ -43,3 +43,7 @@ each is not survivable.
 Instead, surface voxels are merged into a much smaller set of **multi-resolution box colliders**, pooled and
 rebuilt incrementally as the volume is edited. A large model becomes collidable without a collider per
 voxel, and destruction stays real-time because colliders are recycled rather than reallocated.
+
+---
+
+Pulled from Project-Voxel (private). Original systems by LostPizzaMan.
