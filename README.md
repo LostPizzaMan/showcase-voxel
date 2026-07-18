@@ -44,6 +44,14 @@ Instead, surface voxels are merged into a much smaller set of **multi-resolution
 rebuilt incrementally as the volume is edited. A large model becomes collidable without a collider per
 voxel, and destruction stays real-time because colliders are recycled rather than reallocated.
 
+## References
+
+Background reading that informed the voxel storage, collider merging, and ray traversal work:
+
+- [Voxel World Optimisations](https://vercidium.com/blog/voxel-world-optimisations/), Vercidium
+- [Meshing in a Minecraft Game](https://0fps.net/2012/06/30/meshing-in-a-minecraft-game/), Mikola Lysenko (greedy meshing)
+- [A Fast Voxel Traversal Algorithm for Ray Tracing](http://www.cse.yorku.ca/~amana/research/grid.pdf), Amanatides & Woo
+
 ---
 
 *Pulled from Project-Voxel (private). Original systems by LostPizzaMan.*
