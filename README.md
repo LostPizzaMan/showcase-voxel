@@ -7,17 +7,18 @@ mesh: the volume is rendered by marching a ray through the texture per pixel. Th
 on top of that idea: making the volume **destructible**, **collidable**, and **editable at runtime**.
 
 **This is a source showcase, not a buildable project.** It's here to be read, and it won't compile as-is.
-It contains only the C# I wrote. The renderer itself is not mine and is not included, I did however convert it to from URP to BIRP.
+It contains only the C# I wrote. The renderer itself is not mine and is not included: it is
+[arlorean/RaymarchVoxels](https://github.com/arlorean/RaymarchVoxels) (MIT).
 
 ## What I wrote
 
 | File | Lines | Role |
 |---|---|---|
-| `src/VoxelChunk.cs` | 1942 | The core. A destructible voxel volume: loads the model, owns the `Texture3D` and palette, applies edits, and rebuilds collision as the volume changes. |
-| `src/VoxelInteractionManager.cs` | 266 | Runtime editing. Raycast into the volume, remove voxels within a spherical radius or spray-paint them, and spawn rigidbody debris for what comes off. |
+| `src/VoxelChunk.cs` | 1447 | The core. A destructible voxel volume: loads the model, owns the `Texture3D` and palette, applies edits, and rebuilds collision as the volume changes. |
+| `src/VoxelInteractionManager.cs` | 246 | Runtime editing. Raycast into the volume, remove voxels within a spherical radius or spray-paint them, and spawn rigidbody debris for what comes off. |
 | `src/FlyCamera.cs` | 186 | Free-look camera for moving through the scene. |
-| `src/ColliderPool.cs` | 74 | A recycled pool of `BoxCollider`s. Destruction churns colliders constantly, so pooling is what stops it from lagging. |
-| `src/Texture3DAtlas.cs` | 57 | Flattens a `Texture3D` into a single-row `Texture2D` atlas of Z-slices, for platforms where 3D textures are awkward. |
+| `src/ColliderPool.cs` | 65 | A recycled pool of `BoxCollider`s. Destruction churns colliders constantly, so pooling is what stops it from lagging. |
+| `src/Texture3DAtlas.cs` | 52 | Flattens a `Texture3D` into a single-row `Texture2D` atlas of Z-slices, for platforms where 3D textures are awkward. |
 | `src/Spawner.cs` | 54 | Grid spawning of test models. |
 
 ## Models load at runtime
