@@ -64,4 +64,4 @@ Background reading that informed the voxel storage, collider merging, and ray tr
 
 ---
 
-*Pulled from Project-Voxel (private). Original systems by LostPizzaMan.*
+*Pulled from Project-Playground (private). Original systems by [LostPizzaMan](https://github.com/LostPizzaMan).*
