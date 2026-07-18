@@ -40,9 +40,19 @@ The original renderer lists per-voxel sphere colliders under things it deliberat
 right that the naive version doesn't work: a modest model is tens of thousands of voxels, and a collider
 each is not survivable.
 
-Instead, surface voxels are merged into a much smaller set of **multi-resolution box colliders**, pooled and
-rebuilt incrementally as the volume is edited. A large model becomes collidable without a collider per
-voxel, and destruction stays real-time because colliders are recycled rather than reallocated.
+Instead, solid voxels are merged into a much smaller set of **multi-resolution box colliders** by
+**greedy meshing**, pooled and rebuilt incrementally as the volume is edited. A large model becomes
+collidable without a collider per voxel, and destruction stays real-time because colliders are recycled
+rather than reallocated.
+
+The merge is the standard greedy-meshing idea applied to **3D boxes** rather than 2D quads. The grid is
+first downsampled by a scale factor, where a cell counts as solid if any voxel inside it is. Each
+unvisited solid cell then grows along **X**, then **Z**, then **Y** for as long as the face it is
+expanding into stays solid and unvisited; the span is marked visited and its tight bounds are computed
+back at full resolution. Thousands of voxels collapse into a handful of boxes.
+
+Worth noting where this sits: greedy meshing is usually a *rendering* optimisation, and this project has
+no mesh to optimise, since the volume is raymarched. Here the same algorithm solves collision instead.
 
 ## References
 
